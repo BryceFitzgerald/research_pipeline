@@ -323,11 +323,11 @@ function [probabilityOfSuccess, averageObjectiveFunctionEvaluations, InHours, In
         SumOfSumsOfObjectiveFunctionEvaluations = SumOfSumsOfObjectiveFunctionEvaluations + SumOfObjectiveFunctionEvaluations;
         NumberOfSuccesses = NumberOfSuccesses + 1;
         
-        disp('***Hallelujah....Mission Accomplished!!!***');
+        disp('\n***Hallelujah....Mission Accomplished!!!***\n');
         %    load handel
         %    sound(y,Fs)
         
-        disp(strcat('***The global best objective function value has so far been: ', num2str(gBestScore)));
+        disp(strcat('***The global best objective function value has so far been:  %3.6f.***\n\n\n', num2str(gBestScore)));
         break;
         end
 
@@ -410,7 +410,7 @@ function [probabilityOfSuccess, averageObjectiveFunctionEvaluations, InHours, In
 
     end % End Experimental Runs
 
-    disp(strcat('***The probablity of success is: ', num2str(NumberOfSuccesses / NumberOfIterationsToFindTheAverage)));
+    disp(strcat('\n***The probablity of success is: ', num2str(NumberOfSuccesses / NumberOfIterationsToFindTheAverage)));
     disp(strcat('***The average number of objective function evaluations is: ', num2str(ceil(SumOfSumsOfObjectiveFunctionEvaluations / NumberOfSuccesses))));
 
     % Compute and print the elapsed time.
@@ -420,7 +420,7 @@ function [probabilityOfSuccess, averageObjectiveFunctionEvaluations, InHours, In
     InSeconds = floor(InSeconds);
     InMinutes = mod(TimeIntervalBetweenBeginTimeAndNow, 60);
     InHours = (TimeIntervalBetweenBeginTimeAndNow - InMinutes) / 60;
-    disp(strcat('***Elapsed time is(', num2str(InHours) ,' Hours),(', num2str(InMinutes),' Minutes),(', num2str(InSeconds),' Seconds)'));
+    disp(strcat('Elapsed time is', num2str(InHours) ,' Hours'' Minutes %2i Seconds.\n\n', num2str(InMinutes), num2str(InSeconds)));
     probabilityOfSuccess = NumberOfSuccesses/NumberOfIterationsToFindTheAverage
     averageObjectiveFunctionEvaluations = ceil(SumOfObjectiveFunctionEvaluations/NumberOfSuccesses)
 end
